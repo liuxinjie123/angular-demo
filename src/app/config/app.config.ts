@@ -6,7 +6,11 @@ export let APP_CONFIG = new InjectionToken('app.config');
 
 export const AppConfig: IAppConfig = {
   routes: {
+    index: 'index',
+    login: 'login',
     heroes: 'heroes',
+    heroDetail: 'detail/:id',
+    dashboard: 'dashboard',
     error404: '404'
   },
   endpoints: {

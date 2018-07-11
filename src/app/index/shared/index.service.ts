@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { AppConfig } from "../../config/app.config";
+import { AppConfig } from '../../config/app.config';
 import { Observable, of, throwError as observableThrowError} from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import { catchError, tap } from 'rxjs/operators';
 export class IndexService {
   private initDataUrl: string;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private activatedRoute: ActivatedRoute) {
     this.initDataUrl = AppConfig.index.initData;
   }
 
@@ -29,9 +30,8 @@ export class IndexService {
   }
 
   getIndexDataById(id: string): Observable<String> {
-    console.log(' ---------------------------------------------');
     const url = `${this.initDataUrl}/${id}`;
-    console.log(' ------------------------------ ');
+    console.log(' -------url=' + url);
     return this.http.get<string>(url).pipe(
       tap(() => console.log(`fetched test id=${id}`)),
       catchError(this.handleError<String>(`test id=${id}`))

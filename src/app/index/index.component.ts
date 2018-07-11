@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IndexService } from "./shared/index.service";
+import { IndexService } from './shared/index.service';
 
 @Component({
   selector: 'app-index',
@@ -12,12 +12,14 @@ export class IndexComponent implements OnInit {
   constructor(private indexService: IndexService) { }
 
   ngOnInit() {
-    console.log(' ------------------------------------ ');
+    this.initData();
+  }
+
+  initData(): void {
     const indexId = 'IndexId';
     this.indexService.getIndexDataById(indexId).subscribe((id: String) => {
       this.id = id;
       console.log(id);
     });
   }
-
 }

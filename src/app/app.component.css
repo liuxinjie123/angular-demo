@@ -27,3 +27,26 @@ nav a:hover {
 nav a.active {
   color: #039be5;
 }
+
+.center-align {
+  text-align: center;
+}
+
+.left-align {
+  text-align: left;
+}
+
+.main-title {
+  text-align: center;
+  font-size: 40px;
+  font-weight: 500;
+  margin-top: 30px;
+}
+
+body{
+  /* 当内容高度大于图片高度时，背景图像的位置相对于viewport固定 */
+  background: url("../assets/images/bg_img.jpg") no-repeat fixed center center;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+}

@@ -1,0 +1,145 @@
+// SCSS variables are information about icon's compiled state, stored under its original file name
+//
+// .icon-home {
+//   width: $icon-home-width;
+// }
+//
+// The large array-like variables contain all information about a single icon
+// $icon-home: x y offset_x offset_y width height total_width total_height image_path;
+//
+// At the bottom of this section, we provide information about the spritesheet itself
+// $spritesheet: width height image $spritesheet-sprites;
+$icon-attention-name: 'icon_attention';
+$icon-attention-x: 0px;
+$icon-attention-y: 278px;
+$icon-attention-offset-x: 0px;
+$icon-attention-offset-y: -278px;
+$icon-attention-width: 60px;
+$icon-attention-height: 60px;
+$icon-attention-total-width: 338px;
+$icon-attention-total-height: 338px;
+$icon-attention-image: '/static/admin/css/images/sprite/auto-sprite.png';
+$icon-attention: (0px, 278px, 0px, -278px, 60px, 60px, 338px, 338px, '/static/admin/css/images/sprite/auto-sprite.png', 'icon_attention', );
+$icon-calendar-color-name: 'icon_calendar_color';
+$icon-calendar-color-x: 323px;
+$icon-calendar-color-y: 0px;
+$icon-calendar-color-offset-x: -323px;
+$icon-calendar-color-offset-y: 0px;
+$icon-calendar-color-width: 15px;
+$icon-calendar-color-height: 15px;
+$icon-calendar-color-total-width: 338px;
+$icon-calendar-color-total-height: 338px;
+$icon-calendar-color-image: '/static/admin/css/images/sprite/auto-sprite.png';
+$icon-calendar-color: (323px, 0px, -323px, 0px, 15px, 15px, 338px, 338px, '/static/admin/css/images/sprite/auto-sprite.png', 'icon_calendar_color', );
+$icon-calendar-gray-name: 'icon_calendar_gray';
+$icon-calendar-gray-x: 288px;
+$icon-calendar-gray-y: 35px;
+$icon-calendar-gray-offset-x: -288px;
+$icon-calendar-gray-offset-y: -35px;
+$icon-calendar-gray-width: 15px;
+$icon-calendar-gray-height: 15px;
+$icon-calendar-gray-total-width: 338px;
+$icon-calendar-gray-total-height: 338px;
+$icon-calendar-gray-image: '/static/admin/css/images/sprite/auto-sprite.png';
+$icon-calendar-gray: (288px, 35px, -288px, -35px, 15px, 15px, 338px, 338px, '/static/admin/css/images/sprite/auto-sprite.png', 'icon_calendar_gray', );
+$icon-drop-name: 'icon_drop';
+$icon-drop-x: 158px;
+$icon-drop-y: 125px;
+$icon-drop-offset-x: -158px;
+$icon-drop-offset-y: -125px;
+$icon-drop-width: 55px;
+$icon-drop-height: 55px;
+$icon-drop-total-width: 338px;
+$icon-drop-total-height: 338px;
+$icon-drop-image: '/static/admin/css/images/sprite/auto-sprite.png';
+$icon-drop: (158px, 125px, -158px, -125px, 55px, 55px, 338px, 338px, '/static/admin/css/images/sprite/auto-sprite.png', 'icon_drop', );
+$icon-light-name: 'icon_light';
+$icon-light-x: 233px;
+$icon-light-y: 70px;
+$icon-light-offset-x: -233px;
+$icon-light-offset-y: -70px;
+$icon-light-width: 35px;
+$icon-light-height: 35px;
+$icon-light-total-width: 338px;
+$icon-light-total-height: 338px;
+$icon-light-image: '/static/admin/css/images/sprite/auto-sprite.png';
+$icon-light: (233px, 70px, -233px, -70px, 35px, 35px, 338px, 338px, '/static/admin/css/images/sprite/auto-sprite.png', 'icon_light', );
+$icon-yes-name: 'icon_yes';
+$icon-yes-x: 80px;
+$icon-yes-y: 200px;
+$icon-yes-offset-x: -80px;
+$icon-yes-offset-y: -200px;
+$icon-yes-width: 58px;
+$icon-yes-height: 58px;
+$icon-yes-total-width: 338px;
+$icon-yes-total-height: 338px;
+$icon-yes-image: '/static/admin/css/images/sprite/auto-sprite.png';
+$icon-yes: (80px, 200px, -80px, -200px, 58px, 58px, 338px, 338px, '/static/admin/css/images/sprite/auto-sprite.png', 'icon_yes', );
+$spritesheet-width: 338px;
+$spritesheet-height: 338px;
+$spritesheet-image: '/static/admin/css/images/sprite/auto-sprite.png';
+$spritesheet-sprites: ($icon-attention, $icon-calendar-color, $icon-calendar-gray, $icon-drop, $icon-light, $icon-yes, );
+$spritesheet: (338px, 338px, '/static/admin/css/images/sprite/auto-sprite.png', $spritesheet-sprites, );
+
+// The provided mixins are intended to be used with the array-like variables
+//
+// .icon-home {
+//   @include sprite-width($icon-home);
+// }
+//
+// .icon-email {
+//   @include sprite($icon-email);
+// }
+//
+// Example usage in HTML:
+//
+// `display: block` sprite:
+// <div class="icon-home"></div>
+//
+// To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+//
+// // CSS
+// .icon {
+//   display: inline-block;
+// }
+//
+// // HTML
+// <i class="icon icon-home"></i>
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 5);
+}
+
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 6);
+}
+
+@mixin sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 3);
+  $sprite-offset-y: nth($sprite, 4);
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+@mixin sprite-image($sprite) {
+  $sprite-image: nth($sprite, 9);
+  background-image: url(#{$sprite-image});
+}
+
+@mixin sprite($sprite) {
+  @include sprite-image($sprite);
+  @include sprite-position($sprite);
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+}
+
+// The `sprites` mixin generates identical output to the CSS template
+//   but can be overridden inside of SCSS
+//
+// @include sprites($spritesheet-sprites);
+@mixin sprites($sprites) {
+  @each $sprite in $sprites {
+    $sprite-name: nth($sprite, 10);
+    .#{$sprite-name} {
+      @include sprite($sprite);
+    }
+  }
+}

@@ -1,3 +1,42 @@
-<p>
-  login works!
-</p>
+<div class="loginWrap">
+  <div class="loginCon">
+    <div class="title">
+      <h1>用户登录</h1>
+    </div>
+
+    <form class="form-horizontal" (ngSubmit)="login()" #loginForm="ngForm">
+      <div [class.has-success]="username.valid && username.dirty" [class.has-error]="username.invalid && username.dirty">
+        <div class="">
+          <input type="text" class="inputText" placeholder="用户名" id="inputUsername" name="username" [(ngModel)]="currentUser.username" #username="ngModel" required >
+          <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" [class.hidden]="username.invalid ||  username.pristine"></span>
+          <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" [class.hidden]="username.valid || username.pristine"></span>
+        </div>
+      </div>
+
+      <div [class.has-success]="password.valid && password.dirty" [class.has-error]="password.invalid && password.dirty">
+        <div class="">
+          <input type="password" class="inputText" placeholder="密码" id="inputPassword" name="password" [(ngModel)]="currentUser.password" #password="ngModel" required>
+          <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" [class.hidden]="password.invalid ||  password.pristine"></span>
+          <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" [class.hidden]="password.valid || password.pristine"></span>
+        </div>
+      </div>
+
+      <div class="error" role="alert" >
+        <span [class.hidden]="username.valid || username.pristine">请填写用户名!</span>
+        <span [class.hidden]="password.valid || password.pristine">请填写密码!</span>
+        <span [class.hidden]="">账户或者密码错误，请重新输入。</span>
+      </div>
+
+      <button type="submit" class="button" [disabled]="!loginForm.form.valid">登录</button>
+
+      <div class="tips"></div>
+
+    </form>
+
+  </div>
+
+
+</div>
+
+
+
