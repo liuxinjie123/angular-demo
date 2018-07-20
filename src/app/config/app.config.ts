@@ -17,7 +17,7 @@ export const AppConfig: IAppConfig = {
     heroes: 'https://nodejs-example-app.herokuapp.com/heroes'
   },
   index: {
-    initData: 'http://localhost:8008/test'
+    initData: 'http://localhost:8002/test'
   },
   votesLimit: 3,
   topHeroesLimit: 4,

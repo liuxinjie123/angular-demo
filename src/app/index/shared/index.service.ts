@@ -4,6 +4,7 @@ import { Observable, of, throwError as observableThrowError} from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
+import { Result } from '../../result';
 
 @Injectable({
   providedIn: 'root'
@@ -29,12 +30,12 @@ export class IndexService {
     };
   }
 
-  getIndexDataById(id: string): Observable<String> {
+  getIndexDataById(id: string): Observable<Result> {
     const url = `${this.initDataUrl}/${id}`;
     console.log(' -------url=' + url);
-    return this.http.get<string>(url).pipe(
+    return this.http.get<Result>(url).pipe(
       tap(() => console.log(`fetched test id=${id}`)),
-      catchError(this.handleError<String>(`test id=${id}`))
+      catchError(this.handleError<Result>(`test id=${id}`))
     );
   }
 
