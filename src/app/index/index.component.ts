@@ -9,8 +9,6 @@ import { Result } from '../result';
 })
 export class IndexComponent implements OnInit {
   id: string;
-  code: string;
-  msg: string;
   data: object;
 
   constructor(private indexService: IndexService) { }
@@ -23,22 +21,20 @@ export class IndexComponent implements OnInit {
     const indexId = 'IndexId';
     this.indexService.getIndexDataById(indexId).subscribe((result: Result) => {
       if (result != null) {
-        this.code = result.code;
-        this.msg = result.msg;
-        if (this.code === '000000') {
+        if (result.code === '000000') {
           this.data = result.data;
           if (this.data != null) {
             this.id = this.data.toString();
           } else {
-            console.log(this.msg);
+            console.log(result.msg);
           }
         } else {
-          console.log(this.msg);
+          console.log(result.msg);
         }
       }
       console.log(result);
-      console.log(this.code);
-      console.log(this.msg);
+      console.log(result.code);
+      console.log(result.msg);
       console.log(this.data);
     });
   }
